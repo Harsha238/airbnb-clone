@@ -43,6 +43,10 @@ app.get("/", (req, res) => {
     res.redirect("/listings");
 });
 
+app.get('/favicon.ico', (req, res) => {
+    res.status(204).end();
+});
+
 const sessionOptions = {
     secret: process.env.SESSION_SECRET,
     resave:false,
