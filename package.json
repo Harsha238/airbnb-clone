@@ -6,13 +6,15 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
+  "devDependencies": {
+    "nodemon":"^3.0.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "cloudinary": "^1.41.3",
-    "nodemon": "^16.0.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.3.1",
