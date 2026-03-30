@@ -116,3 +116,49 @@ body{
     padding-left: 0;
     padding-right: 0;
 }
+
+@media (max-width: 768px) {
+
+  .container {
+    max-width: 100% !important;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Fix show page layout */
+  .show-card {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .show-img {
+    width: 100%;
+    height: auto;
+  }
+
+  #map {
+    width: 100% !important;
+    height: 300px !important;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btns a,
+  .btns button {
+    width: 100%;
+  }
+}
+
+/* ===== FIX DESKTOP WIDTH ===== */
+
+/* OPTIONAL: even wider screens */
+@media (min-width: 1600px) {
+
+  .container {
+    max-width: 1600px !important;
+  }
+
+}

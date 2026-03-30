@@ -1,52 +1,142 @@
 <style>
-  .search-btn{
-    background-color: #fe424d;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
+/* ===== SEARCH ===== */
+.search-btn{
+  background-color: #fe424d;
+  color: #fff;
+  border-radius: 25px;
+  padding: 0 1rem;
+}
+.search-btn:hover{
+  background-color: #fe424d;
+  color: #fff;
+}
+.search-btn i{
+  margin-right: 10px;
+}
+.search-inp{
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+}
+
+/* ===== MENU BUTTON ===== */
+.menu-btn{
+  padding: 6px 10px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size:18px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  z-index: 1000;
+}
+
+/* ===== REMOVE BOOTSTRAP COLLAPSE ===== */
+.navbar-collapse{
+  display: flex !important;
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu{
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: 250px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  padding: 15px;
+  display: none;
+  z-index: 999;
+}
+
+.mobile-menu a{
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mobile-menu a:hover{
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px){
+
+  .navbar-collapse{
+    display: none !important;
   }
-  .search-btn:hover{
-    background-color: #fe424d;
-    color: #fff;
+
+  .menu-btn{
+    display: block;
   }
-  .search-btn i{
-    display: inline;
-    margin-right: 0.5rem;
+}
+
+@media (min-width: 769px){
+  .menu-btn{
+    display: none;
   }
-  .search-inp{
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    font-size: 1rem;
-  }
+}
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"> <i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-      <span class="navbar-toggler-icon"></span>
+
+    <!-- LOGO -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+
+    <!-- ✅ FIXED BUTTON -->
+    <button id="menuBtn" class="menu-btn">
+      <i class="fa-solid fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+    <!-- DESKTOP MENU -->
+    <div class="collapse navbar-collapse">
+
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
-        
       </div>
+
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-      <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" />
-      <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-    </form>
+        <form class="d-flex">
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations">
+          <button class="btn search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
       </div>
+
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
-        <% if(!currUser){%>
-        <a class="nav-link" href="/signup"><b>Sign up</b></a>
-        <a class="nav-link" href="/login"><b>Login</b></a>
-        <%}%>
-        <% if(currUser){%>
-        <a class="nav-link" href="/logout"><b>Logout</b></a>
-        <%}%>
+
+        <% if(!currUser){ %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } else { %>
+          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
       </div>
+
     </div>
   </div>
+
+  <!-- MOBILE DROPDOWN -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="/listings">Explore</a>
+    <a href="/listings/new">Airbnb your home</a>
+    <hr>
+
+    <% if(!currUser){ %>
+      <a href="/signup"><b>Sign up</b></a>
+      <a href="/login"><b>Login</b></a>
+    <% } else { %>
+      <a href="/logout"><b>Logout</b></a>
+    <% } %>
+  </div>
+
 </nav>
